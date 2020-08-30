@@ -18,10 +18,8 @@ main {
     background-color: coral;
 }
 
-#starters article {
+section article {
     background-color: aquamarine;
 }
 
-#mains article {
-    background-color: aquamarine;
-}
+
