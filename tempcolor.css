@@ -10,6 +10,14 @@ main {
     background-color: burlywood;
 }
 
+sideorders {
+    background-color: chartreuse;
+}
+
+desserts {
+    background-color: darkgoldenrod;
+}
+
 #starters {
     background-color: chartreuse;
 }
