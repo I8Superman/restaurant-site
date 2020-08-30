@@ -1,1 +1,28 @@
-css here
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 35px;
+  height: 100px;
+}
+
+
+body {
+    margin: 0;
+}
+
+.productlist > section {
+  display: grid;
+  /*max-width: 1200px;*/
+  /*margin: auto;*/
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /*grid-gap: 60px;*/
+  /*margin-bottom: 60px;*/
+}

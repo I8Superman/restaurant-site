@@ -1,0 +1,27 @@
+header {
+    background-color: antiquewhite;
+}
+
+nav {
+    background-color: blueviolet;
+}
+
+main {
+    background-color: burlywood;
+}
+
+#starters {
+    background-color: chartreuse;
+}
+
+#mains {
+    background-color: coral;
+}
+
+#starters article {
+    background-color: aquamarine;
+}
+
+#mains article {
+    background-color: aquamarine;
+}
