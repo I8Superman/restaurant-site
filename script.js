@@ -1,4 +1,36 @@
-// Cloning example:
+// fetch data
+
+fetch("https://kea-alt-del.dk/t5/api/productlist")
+    .then(function (res) {
+        return res.json();
+        console.log(res)
+    })
+    .then(function (data) {
+        console.log(data)
+        dataReceived(data);
+    })
+
+// Here we pass the data to a function andgive he data a new name - products
+
+function dateReceived(courses) {
+    // loop through data
+    courses.forEach(showCourse);
+}
+
+function showCourse(myCourse) {
+console.log(mycourse)
+}
+
+// find the template
+
+// clone template
+
+// Fill out the template
+
+// Append the template
+
+
+/* Cloning example:
 
 const template = document.querySelector("#templatetest").content;
 
@@ -17,6 +49,8 @@ const whosyourDaddy = document.querySelector("#starters");
 whosyourDaddy.appendChild(cloneTest);
 
 console.log("appended to parent element!");
+
+*/
 
 
 /*
