@@ -67,6 +67,8 @@ function showCourse(oneCourse) {
     const myCopy = template.cloneNode(true);
     // Fill out the template
     myCopy.querySelector(".course_name").textContent = oneCourse.name;
+    myCopy.querySelector(".short_description").textContent = oneCourse.shortdescription;
+    myCopy.querySelector(".course_price").textContent = `${oneCourse.price},-`
     // Append the template
     const parentElement = document.querySelector("section#starter");
     parentElement.appendChild(myCopy);
