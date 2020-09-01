@@ -12,50 +12,66 @@ function init() {
 function categoriesReceived(cats) {
     console.log(cats);
     createSections(cats);
+    createNavigation(cats);
+    fetchCourses(cats);
+
 }
 
 function createSections(categories) {
-categories.forEach(category => {
-    const section = document.createElement("section");
-    section.setAttribute("id", category);
-    const h2 = document.createElement("h2");
-    h2.textContent = category;
-    section.appendChild(h2);
-    document.querySelector(".productlist").appendChild(section);
-})
+    categories.forEach(category => {
+        const section = document.createElement("section");
+        section.setAttribute("id", category);
+        const h2 = document.createElement("h2");
+        h2.textContent = category;
+        section.appendChild(h2);
+        document.querySelector(".productlist").appendChild(section);
+    })
 }
+
+function createNavigation(categories) {
+    categories.forEach(category => {
+        console.log(category)
+        const a = document.createElement("a");
+        a.textContent = category;
+        a.setAttribute("href", `#${category}`);
+        document.querySelector("nav").appendChild(a);
+    })
+}
+
 
 // Fetch the data - productlist
 
-/*fetch("https://kea-alt-del.dk/t5/api/productlist")
+function fetchCourses() {
+fetch("https://kea-alt-del.dk/t5/api/productlist")
     .then(function (response) {
         console.log(response);
         return response.json();
     })
-    .then(function(data) {
+    .then(function (data) {
         console.log(data);
         dataReceived(data);
     })
+}
 
 
 function dataReceived(courses) {
-// loop through data
+    // loop through data
     courses.forEach(showCourse);
 }
 
 // Executed once for each course
-function showCourse(thisCourse) {
-// Find the template
-const template = document.querySelector("#courseTemplate").content;
-// clone the template
-const myCopy = template.cloneNode(true);
-// Fill out the template
-myCopy.querySelector(".course_name").textContent = thisCourse.name;
-// Append the template
-const parentElement = document.querySelector("section#starters");
-parentElement.appendChild(myCopy);
+function showCourse(oneCourse) {
+    // Find the template
+    const template = document.querySelector("#courseTemplate").content;
+    // clone the template
+    const myCopy = template.cloneNode(true);
+    // Fill out the template
+    myCopy.querySelector(".course_name").textContent = oneCourse.name;
+    // Append the template
+    const parentElement = document.querySelector("section#starter");
+    parentElement.appendChild(myCopy);
 }
-*/
+
 
 
 /* Cloning example:
