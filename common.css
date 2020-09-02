@@ -41,6 +41,20 @@ body {
     grid-column: 1/-1;
 }
 
+.course {
+    position: relative;
+}
+
+.course > p {
+    font-size: 3em;
+    transform: rotate(-30deg);
+    color: crimson;
+    text-shadow: black 3px;
+    position: absolute;
+    top: 10%;
+    left: 20%;
+}
+
 footer {
     height: 5vh;
     width: 100%;

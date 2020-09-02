@@ -67,8 +67,15 @@ function showCourse(oneCourse) {
     const myCopy = template.cloneNode(true);
 
     // Add icons
-    if (oneCourse.vegetarian) {
+    if(oneCourse.vegetarian) {
         myCopy.querySelector(".vegetarian").classList.remove("hidden");
+    }
+
+    // add soldout sign
+    if(oneCourse.soldout) {
+        const p = document.createElement("p");
+        p.textContent = "Sold Out";
+        myCopy.querySelector("article").appendChild(p);
     }
 
     // Fill out the template
