@@ -10,7 +10,7 @@ function init() {
 }
 
 function categoriesReceived(cats) {
-    console.log(cats);
+    //console.log(cats);
     createSections(cats);
     createNavigation(cats);
     fetchCourses(cats);
@@ -30,7 +30,7 @@ function createSections(categories) {
 
 function createNavigation(categories) {
     categories.forEach(category => {
-        console.log(category)
+        //console.log(category)
         const a = document.createElement("a");
         a.textContent = category;
         a.setAttribute("href", `#${category}`);
@@ -44,11 +44,11 @@ function createNavigation(categories) {
 function fetchCourses() {
     fetch("https://kea-alt-del.dk/t5/api/productlist")
         .then(function (response) {
-            console.log(response);
+            //console.log(response);
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            //console.log(data);
             dataReceived(data);
         })
 }
@@ -67,16 +67,24 @@ function showCourse(oneCourse) {
     const myCopy = template.cloneNode(true);
 
     // Add icons
-    if(oneCourse.vegetarian) {
+    if (oneCourse.vegetarian) {
         myCopy.querySelector(".vegetarian").classList.remove("hidden");
     }
 
     // add soldout sign
-    if(oneCourse.soldout) {
+    if (oneCourse.soldout) {
         const p = document.createElement("p");
         p.textContent = "Sold Out";
         myCopy.querySelector("article").appendChild(p);
     }
+
+    // Setup classes for filtering
+    // 1. Find the element
+    const article = myCopy.querySelector("article");
+    if (oneCourse.vegetarian) {
+        article.classList.add("vegetarian");
+    }
+    // 2. Add classes
 
     // Fill out the template
     myCopy.querySelector(".course_name").textContent = oneCourse.name;
@@ -86,6 +94,17 @@ function showCourse(oneCourse) {
     const parentElement = document.querySelector("section#starter");
     parentElement.appendChild(myCopy);
 }
+
+const vegetarian_button = document.querySelector("#vegetarian_button");
+vegetarian_button.addEventListener("click", vegetarianButtonClicked);
+
+function vegetarianButtonClicked(){
+    const articles = document.querySelectorAll("article:not(.vegetarian)");
+    articles.forEach(article => {
+        article.classList.toggle("hidden");
+    })
+}
+
 
 
 
