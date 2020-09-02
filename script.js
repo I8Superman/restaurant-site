@@ -42,15 +42,15 @@ function createNavigation(categories) {
 // Fetch the data - productlist
 
 function fetchCourses() {
-fetch("https://kea-alt-del.dk/t5/api/productlist")
-    .then(function (response) {
-        console.log(response);
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-        dataReceived(data);
-    })
+    fetch("https://kea-alt-del.dk/t5/api/productlist")
+        .then(function (response) {
+            console.log(response);
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            dataReceived(data);
+        })
 }
 
 
@@ -65,6 +65,12 @@ function showCourse(oneCourse) {
     const template = document.querySelector("#courseTemplate").content;
     // clone the template
     const myCopy = template.cloneNode(true);
+
+    // Add icons
+    if (oneCourse.vegetarian) {
+        myCopy.querySelector(".vegetarian").classList.remove("hidden");
+    }
+
     // Fill out the template
     myCopy.querySelector(".course_name").textContent = oneCourse.name;
     myCopy.querySelector(".short_description").textContent = oneCourse.shortdescription;

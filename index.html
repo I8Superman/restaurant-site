@@ -18,19 +18,27 @@
     <main class="productlist">
     </main>
 
-     <template id="courseTemplate">
-                <article class="course">
-                    <img src="https://www.expatica.com/app/uploads/sites/11/2014/05/RU-Borscht-1200x675.jpg" alt="" />
-                    <section class="course_body">
-                    <h3 class="course_name">Nasty russian dish</h3>
-                    <p>This is a short description. Nice!</p>
-                    <h4 class="course_price">499,-</h4>
-                    <button>See more</button>
-                        </section>
-                </article>
-            </template>
+    <template id="courseTemplate">
+        <article class="course">
+            <img src="https://www.expatica.com/app/uploads/sites/11/2014/05/RU-Borscht-1200x675.jpg" alt="" />
+            <div class="info_icons">
+                <img class="vegetarian hidden" src="ressources/vegetarian.svg">
+                <img class="soldout hidden">
+                <img class="alcohol hidden">
+                <img class="allergens hidden">
+            </div>
+            <section class="course_body">
+                <h3 class="course_name">Nasty russian dish</h3>
+                <p class="short_description">This is a short description. Nice!</p>
+                <h4 class="course_price">499,-</h4>
+                <button>See more</button>
+            </section>
+        </article>
+    </template>
 
     <footer>This is a footer
     </footer>
     <script src="script.js"></script>
-</body></html>
+</body>
+
+</html>
