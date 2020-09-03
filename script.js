@@ -3,8 +3,9 @@
 init();
 
 function init() {
-    fetch("https://kea-alt-del.dk/t5/api/categories").then(response => response.json()).then(
-        function (data) {
+    fetch("https://kea-alt-del.dk/t5/api/categories")
+        .then(response => response.json())
+        .then(function (data) {
             categoriesReceived(data)
         })
 }
@@ -61,6 +62,7 @@ function dataReceived(courses) {
 
 // Executed once for each course
 function showCourse(oneCourse) {
+    //console.log(oneCourse);
     // Find the template
     const template = document.querySelector("#courseTemplate").content;
     // clone the template
@@ -86,20 +88,45 @@ function showCourse(oneCourse) {
     }
     // 2. Add classes
 
-    // Fill out the template
-    console.log("I am a", oneCourse.category);
+    // Fill out the template:
+    // Getting and adding the image
+    myCopy.querySelector(".course_image").setAttribute("src", "https://kea-alt-del.dk/t5/site/imgs/medium/" + oneCourse.image + "-md.jpg");
+    //console.log("I am a", oneCourse.category);
+    // Get the text for name, description, price etc.
     myCopy.querySelector(".course_name").textContent = oneCourse.name;
     myCopy.querySelector(".short_description").textContent = oneCourse.shortdescription;
     myCopy.querySelector(".course_price").textContent = `${oneCourse.price},-`
+
+    // Add click-listener to Show more-button
+    myCopy.querySelector("button").addEventListener("click", () => {
+        fetch("https://kea-alt-del.dk/t5/api/product?id=" + oneCourse.id)
+            .then(response => response.json())
+            .then(showModal);
+    });
+
     // Append the template
     const parentElement = document.querySelector("section#" + oneCourse.category);
     parentElement.appendChild(myCopy);
 }
 
+function showModal(data) {
+    console.log(data);
+    const modal = document.querySelector(".modal-box");
+    modal.querySelector(".modal-name").textContent = data.name;
+    modal.querySelector(".modal-description").textContent = data.longdescription;
+    // Un-hide the modal element
+    modal.classList.remove("hidden");
+    modal.addEventListener("click", () => {
+        modal.classList.add("hidden");
+    })
+}
+
+
+// Filters
 const vegetarian_button = document.querySelector("#vegetarian_button");
 vegetarian_button.addEventListener("click", vegetarianButtonClicked);
 
-function vegetarianButtonClicked(){
+function vegetarianButtonClicked() {
     const articles = document.querySelectorAll("article:not(.vegetarian)");
     articles.forEach(article => {
         article.classList.toggle("hidden");

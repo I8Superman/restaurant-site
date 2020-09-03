@@ -21,11 +21,19 @@
 
 <body>
     <main class="productlist">
+        <div class="modal-box hidden">
+            <div class="modal-content">
+                <h3 class="modal-name">NAME</h3>
+                <img src="" alt="" class="modal-image" />
+                <p class="modal-description">LONG DESCRIPTION</p>
+                <h4 class="modal-price">PRICE</h4>
+            </div>
+        </div>
     </main>
 
     <template id="courseTemplate">
         <article class="course">
-            <img src="https://www.expatica.com/app/uploads/sites/11/2014/05/RU-Borscht-1200x675.jpg" alt="" />
+            <img class="course_image" src="https://www.expatica.com/app/uploads/sites/11/2014/05/RU-Borscht-1200x675.jpg" alt="" />
             <div class="info_icons">
                 <img class="vegetarian hidden" src="ressources/vegetarian.svg">
                 <img class="soldout hidden">
@@ -43,7 +51,6 @@
 
     <footer>This is a footer
     </footer>
-    <script src="script.js"></script>
-</body>
 
-</html>
+    <script src="script.js"></script>
+</body></html>
