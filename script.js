@@ -87,11 +87,12 @@ function showCourse(oneCourse) {
     // 2. Add classes
 
     // Fill out the template
+    console.log("I am a", oneCourse.category);
     myCopy.querySelector(".course_name").textContent = oneCourse.name;
     myCopy.querySelector(".short_description").textContent = oneCourse.shortdescription;
     myCopy.querySelector(".course_price").textContent = `${oneCourse.price},-`
     // Append the template
-    const parentElement = document.querySelector("section#starter");
+    const parentElement = document.querySelector("section#" + oneCourse.category);
     parentElement.appendChild(myCopy);
 }
 
