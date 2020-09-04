@@ -14,8 +14,8 @@ function categoriesReceived(cats) {
     //console.log(cats);
     createSections(cats);
     createNavigation(cats);
+    displayFilters();
     fetchCourses(cats);
-
 }
 
 function createSections(categories) {
@@ -39,6 +39,16 @@ function createNavigation(categories) {
     })
 }
 
+function displayFilters() {
+    document.querySelectorAll(".filters button").forEach(button=>{
+        button.addEventListener("click", () => {
+            console.log(button.dataset.filter)
+            document.querySelectorAll(`article:not(.${button.dataset.filter})`).forEach(article => {
+                article.classList.toggle("hidden");
+            });
+        })
+    })
+}
 
 // Fetch the data - productlist
 
@@ -86,6 +96,9 @@ function showCourse(oneCourse) {
     if (oneCourse.vegetarian) {
         article.classList.add("vegetarian");
     }
+    if (!oneCourse.soldout) {
+        article.classList.add("notsoldout");
+    }
     // 2. Add classes
 
     // Fill out the template:
@@ -120,19 +133,6 @@ function showModal(data) {
         modal.classList.add("hidden");
     })
 }
-
-
-// Filters
-const vegetarian_button = document.querySelector("#vegetarian_button");
-vegetarian_button.addEventListener("click", vegetarianButtonClicked);
-
-function vegetarianButtonClicked() {
-    const articles = document.querySelectorAll("article:not(.vegetarian)");
-    articles.forEach(article => {
-        article.classList.toggle("hidden");
-    })
-}
-
 
 
 

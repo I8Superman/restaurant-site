@@ -13,10 +13,19 @@
 </header>
 <nav>
 </nav>
-<details>
+<details class="filters">
     <summary>Filters
     </summary>
-    <button id="vegetarian_button">Vegetarian</button>
+    <button id="vegetarian_button" data-filter="vegetarian">Vegetarian</button>
+    <button id="alcohol_button" data-filter="alcohol">No alcohol</button>
+    <button id="soldout_button" data-filter="notsoldout">Available</button>
+</details>
+
+<details>
+    <summary class="sorting">Sort by
+    </summary>
+    <button id="vegetarian_button">Highest price</button>
+    <button id="alcohol_button">Highest rated</button>
 </details>
 
 <body>
