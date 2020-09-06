@@ -40,6 +40,7 @@ function createNavigation(categories) {
 }
 
 function displayFilters() {
+    // Select all the buttons in the <details class="filters"> element
     document.querySelectorAll(".filters button").forEach(button=>{
         button.addEventListener("click", () => {
             console.log(button.dataset.filter)
@@ -91,10 +92,12 @@ function showCourse(oneCourse) {
     }
 
     // Setup classes for filtering
-    // 1. Find the element
     const article = myCopy.querySelector("article");
     if (oneCourse.vegetarian) {
         article.classList.add("vegetarian");
+    }
+    if (oneCourse.alcohol) {
+        article.classList.add("hasalcohol");
     }
     if (!oneCourse.soldout) {
         article.classList.add("notsoldout");
