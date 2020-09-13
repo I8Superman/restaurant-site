@@ -1,5 +1,6 @@
 // Fetch the data - categories
 
+
 init();
 
 function init() {
@@ -41,7 +42,7 @@ function createNavigation(categories) {
 
 function displayFilters() {
     // Select all the buttons in the <details class="filters"> element
-    document.querySelectorAll(".filters button").forEach(button=>{
+    document.querySelectorAll(".filters button").forEach(button => {
         button.addEventListener("click", () => {
             console.log(button.dataset.filter)
             document.querySelectorAll(`article:not(.${button.dataset.filter})`).forEach(article => {
@@ -83,6 +84,14 @@ function showCourse(oneCourse) {
     if (oneCourse.vegetarian) {
         myCopy.querySelector(".vegetarian").classList.remove("hidden");
     }
+    if (oneCourse.alcohol == 0) {
+        myCopy.querySelector(".alcohol").classList.add("hidden");
+    }
+    /*if (oneCourse.allergens.laktose) {
+        console.log("has allergens");
+        myCopy.querySelector(".allergens").classList.add("hidden");
+    }*/
+
 
     // add soldout sign
     if (oneCourse.soldout) {
@@ -113,6 +122,8 @@ function showCourse(oneCourse) {
     myCopy.querySelector(".short_description").textContent = oneCourse.shortdescription;
     myCopy.querySelector(".course_price").textContent = `${oneCourse.price},-`
 
+    const allergens = oneCourse.allergens;
+    console.log(allergens);
     // Add click-listener to Show more-button
     myCopy.querySelector("button").addEventListener("click", () => {
         fetch("https://kea-alt-del.dk/t5/api/product?id=" + oneCourse.id)
